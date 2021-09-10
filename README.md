@@ -1,2 +1,2 @@
-# nice-dice
-Electronic dice d6
+# Nice Dice
+Электронный кубик d6 на светодиодах.
