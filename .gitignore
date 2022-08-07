@@ -1,2 +1,5 @@
 Hardware/nice-dice-backups
 Hardware/#auto_saved_files#
+Firmware/nicedice.hex
+Firmware/.vscode
+Firmware/build
