@@ -5,8 +5,8 @@
 
 #define SHR_DATA B, 0
 #define SHR_CLCK B, 1
-#define SHR_ENABLE B, 2
-#define SHR_LATCH B, 3
+#define SHR_LATCH B, 2
+#define SHR_ENABLE B, 3
 
 #define BUTTON B, 4
 
