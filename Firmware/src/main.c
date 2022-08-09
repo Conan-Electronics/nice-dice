@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <stdlib.h>
 #include <util/delay.h>
 #include "ioports.h"
 
@@ -52,14 +53,21 @@ int main(void) {
     // Init button
     CINPUT(BUTTON);
 
-    while (1) {
-        // Wait for button press
-        while (CREAD(BUTTON)) {
-        }
-        CCLEAR(SHR_ENABLE);
+    unsigned int seed = 0;
+    while (CREAD(BUTTON)) {
+        seed++;
+    }
+    srand(seed);
+    CCLEAR(SHR_ENABLE);
 
+    while (1) {
         // Roll the dice
-        for (int8_t delay = 1; delay < 18; delay++) {
+        digit = rand() % 6;
+        for (uint8_t waits = 0; waits < 10; waits++) {
+            next_digit();
+            _delay_ms(100);
+        }
+        for (int8_t delay = 4; delay < 16; delay++) {
             next_digit();
             for (uint8_t waits = 0; waits < delay; waits++) {
                 _delay_ms(25);
@@ -74,6 +82,10 @@ int main(void) {
         for (int8_t i = 0; i < 6; i++) {
             CTOGGLE(SHR_ENABLE);
             _delay_ms(400);
+        }
+
+        // Wait for button press
+        while (CREAD(BUTTON)) {
         }
     }
 
